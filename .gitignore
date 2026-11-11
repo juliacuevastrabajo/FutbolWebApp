@@ -1,0 +1,22 @@
+# Conexiones y credenciales locales
+**/DFConnId.ini
+.env
+.env.*
+
+# Ejecutables, registros y archivos generados
+Programs/*
+!Programs/config.ws
+IdeSrc/
+*.cch
+*.prn
+*.err
+*.log
+*.bak
+
+# Copias locales de tablas embebidas
+Data/*.dat
+Data/*.k[0-9]*
+
+# Clave local y dependencias generadas
+AppSrc/LoginEncryptionKey.inc
+*.dep
