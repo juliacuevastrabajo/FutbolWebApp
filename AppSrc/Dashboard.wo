@@ -4,42 +4,42 @@ Use cWebGroup.pkg
 Use cWebHtmlBox.pkg
 
 Object oDashboard is a cWebView
-    Set piMaxWidth to 1024
+    Set piMaxWidth to 1200
     Set psCaption to "Inicio"
     Set peViewType to vtUndefined
     Set pbShowCaption to False
-    Set psCSSClass to "Dashboard"
+    Set psCSSClass to "Dashboard FootballDashboard"
 
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 12
+
+        Object oFootballHero is a cWebHtmlBox
+            Set piColumnSpan to 12
+            Set psCSSClass to "FootballHero"
+            Set psHtml to '<section class="ff-hero"><div class="ff-hero-copy"><div class="ff-eyebrow"><span class="ff-brandmark">C</span> CLUBHOUSE <span class="ff-divider">/</span> GESTI&Oacute;N DEPORTIVA</div><h1>Todo tu f&uacute;tbol.<br><em>En un mismo lugar.</em></h1><p>Organiza las ligas, conecta los equipos<br class="ff-desktop-br"> y da protagonismo a quienes juegan.</p><span class="ff-hero-tag">TU ESPACIO DE GESTI&Oacute;N</span></div><div class="ff-pitch"><svg viewBox="0 0 360 240" fill="none" aria-hidden="true"><rect x="20" y="20" width="320" height="200" rx="3"/><path d="M180 20v200M20 70h52v100H20m320-100h-52v100h52M20 95h22v50H20m320-50h-22v50h22"/><circle cx="180" cy="120" r="35"/><circle cx="180" cy="120" r="3"/><circle class="ff-player" cx="115" cy="80" r="7"/><circle class="ff-player" cx="235" cy="155" r="7"/><path class="ff-pass" d="M123 85 227 151"/></svg><span>EL JUEGO EMPIEZA CON UNA BUENA ORGANIZACI&Oacute;N</span></div></section>'
+        End_Object
+
+        Object oFootballHeading is a cWebHtmlBox
+            Set piColumnSpan to 12
+            Set psCSSClass to "FootballHeading"
+            Set psHtml to '<div class="ff-section"><div><span class="ff-eyebrow ff-kicker">PANEL PRINCIPAL</span><h2>Todo listo para empezar.</h2></div><p>Elige qu&eacute; quieres gestionar.</p></div>'
+        End_Object
 
         Object oTiles_grp is a cWebGroup
             Set piColumnSpan to 12
             Set pbShowBorder to False
             Set pbShowCaption to False
             Set piColumnCount to 12
-            Set psCSSClass to "TilesGroup"
+            Set psCSSClass to "FootballTiles"
 
-            Object oTilePosiciones is a cWebHtmlBox
+            Object oTileLiga is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 6
+                Set piColumnSpan to 4
                 Set piColumnIndex to 0
-                Set psCSSClass to "Tile Light"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div class="Tile_Title">Posiciones</div><div class="Tile_Subtitle">Consultar y gestionar posiciones</div></div>'
-
-                WebRegisterPath ntNavigateForward oSelectPosicion
-
-                Procedure OnClick String sId String sParam
-                    Send NavigatePath
-                End_Procedure
-            End_Object
-
-            Object oTileLigas is a cWebHtmlBox
-                Set pbServerOnClick to True
-                Set piColumnSpan to 6
-                Set piColumnIndex to 6
-                Set psCSSClass to "Tile LightAlternate"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div class="Tile_Title">Ligas</div><div class="Tile_Subtitle">Consultar y gestionar ligas</div></div>'
+                Set psCSSClass to "FootballTile ff-mint"
+                WebSetResponsive piColumnSpan rmMobile to 12
+                WebSetResponsive piColumnIndex rmMobile to 0
+                Set psHtml to '<div class="WebCon_Sizer ff-card" data-ServerOnClick="openview"><div class="ff-card-top"><span class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8v5a4 4 0 0 1-8 0V3ZM8 5H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4M12 12v6m-4 3h8m-7-3h6v3H9z"/></svg></span><span class="ff-card-number">01</span></div><h3>Ligas</h3><p>Competiciones que lo conectan todo.</p><div class="ff-card-action"><span>Ver ligas</span><span class="ff-arrow">&rarr;</span></div></div>'
 
                 WebRegisterPath ntNavigateForward oSelectLiga
 
@@ -48,12 +48,14 @@ Object oDashboard is a cWebView
                 End_Procedure
             End_Object
 
-            Object oTileEquipos is a cWebHtmlBox
+            Object oTileEquipo is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 6
-                Set piColumnIndex to 0
-                Set psCSSClass to "Tile Dark"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div class="Tile_Title">Equipos</div><div class="Tile_Subtitle">Consultar y gestionar equipos</div></div>'
+                Set piColumnSpan to 4
+                Set piColumnIndex to 4
+                Set psCSSClass to "FootballTile ff-blue"
+                WebSetResponsive piColumnSpan rmMobile to 12
+                WebSetResponsive piColumnIndex rmMobile to 0
+                Set psHtml to '<div class="WebCon_Sizer ff-card" data-ServerOnClick="openview"><div class="ff-card-top"><span class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 3 4 2 4-2 6 5-4 4-2-2v11H8V10l-2 2-4-4z"/></svg></span><span class="ff-card-number">02</span></div><h3>Equipos</h3><p>La identidad de cada club, organizada.</p><div class="ff-card-action"><span>Ver equipos</span><span class="ff-arrow">&rarr;</span></div></div>'
 
                 WebRegisterPath ntNavigateForward oSelectEquipo
 
@@ -62,12 +64,30 @@ Object oDashboard is a cWebView
                 End_Procedure
             End_Object
 
-            Object oTileEntrenadores is a cWebHtmlBox
+            Object oTilePosicion is a cWebHtmlBox
+                Set pbServerOnClick to True
+                Set piColumnSpan to 4
+                Set piColumnIndex to 8
+                Set psCSSClass to "FootballTile ff-sand"
+                WebSetResponsive piColumnSpan rmMobile to 12
+                WebSetResponsive piColumnIndex rmMobile to 0
+                Set psHtml to '<div class="WebCon_Sizer ff-card" data-ServerOnClick="openview"><div class="ff-card-top"><span class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3"/></svg></span><span class="ff-card-number">03</span></div><h3>Posiciones</h3><p>Cada rol tiene su lugar en el campo.</p><div class="ff-card-action"><span>Ver posiciones</span><span class="ff-arrow">&rarr;</span></div></div>'
+
+                WebRegisterPath ntNavigateForward oSelectPosicion
+
+                Procedure OnClick String sId String sParam
+                    Send NavigatePath
+                End_Procedure
+            End_Object
+
+            Object oTileEntrenador is a cWebHtmlBox
                 Set pbServerOnClick to True
                 Set piColumnSpan to 6
-                Set piColumnIndex to 6
-                Set psCSSClass to "Tile DarkAlternate"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div class="Tile_Title">Entrenadores</div><div class="Tile_Subtitle">Consultar y gestionar entrenadores</div></div>'
+                Set piColumnIndex to 0
+                Set psCSSClass to "FootballTile ff-violet"
+                WebSetResponsive piColumnSpan rmMobile to 12
+                WebSetResponsive piColumnIndex rmMobile to 0
+                Set psHtml to '<div class="WebCon_Sizer ff-card" data-ServerOnClick="openview"><div class="ff-card-top"><span class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="7" r="4"/><path d="M3 21v-3a7 7 0 0 1 11-5m2 1 5 5m-5 0 5-5"/></svg></span><span class="ff-card-number">04</span></div><h3>Entrenadores</h3><p>Las personas que marcan el rumbo.</p><div class="ff-card-action"><span>Ver entrenadores</span><span class="ff-arrow">&rarr;</span></div></div>'
 
                 WebRegisterPath ntNavigateForward oSelectEntrenador
 
@@ -76,12 +96,14 @@ Object oDashboard is a cWebView
                 End_Procedure
             End_Object
 
-            Object oTileJugadores is a cWebHtmlBox
+            Object oTileJugador is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 12
-                Set piColumnIndex to 0
-                Set psCSSClass to "Tile Light"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div class="Tile_Title">Jugadores</div><div class="Tile_Subtitle">Consultar y gestionar jugadores</div></div>'
+                Set piColumnSpan to 6
+                Set piColumnIndex to 6
+                Set psCSSClass to "FootballTile ff-mint"
+                WebSetResponsive piColumnSpan rmMobile to 12
+                WebSetResponsive piColumnIndex rmMobile to 0
+                Set psHtml to '<div class="WebCon_Sizer ff-card" data-ServerOnClick="openview"><div class="ff-card-top"><span class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="4" r="2"/><path d="m8 10 4-3 4 4 4 1m-8-5-2 8-5 5m5-5 6 2 1 4M4 8l4 2"/></svg></span><span class="ff-card-number">05</span></div><h3>Jugadores</h3><p>El talento que da vida al equipo.</p><div class="ff-card-action"><span>Ver jugadores</span><span class="ff-arrow">&rarr;</span></div></div>'
 
                 WebRegisterPath ntNavigateForward oSelectJugador
 
@@ -89,7 +111,11 @@ Object oDashboard is a cWebView
                     Send NavigatePath
                 End_Procedure
             End_Object
+        End_Object
 
+        Object oFootballFooter is a cWebHtmlBox
+            Set piColumnSpan to 12
+            Set psHtml to '<div class="ff-footer"><strong>CLUBHOUSE</strong><span>El orden tambi&eacute;n juega en equipo.</span></div>'
         End_Object
     End_Object
 End_Object

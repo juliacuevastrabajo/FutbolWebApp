@@ -33,6 +33,7 @@ Object oZoomEquipo is a cWebView
 
 
     Object oWebMainPanel is a cWebPanel
+        Set psCSSClass to "ClubhouseSheet"
         Set piColumnCount to 12
         WebSetResponsive piColumnCount rmMobile to 4
 
