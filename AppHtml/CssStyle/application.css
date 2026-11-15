@@ -1,0 +1,175 @@
+/* CLUBHOUSE - tema para DataFlex 25 / Df_Material.
+   Personaliza esta paleta para reutilizar el estilo en otro proyecto.
+   Mantener en application.css; no modificar el tema del fabricante. */
+:root:root {
+  --ff-ink: #102c36;
+  --ff-muted: #5d737a;
+  --ff-green: #14765e;
+  --ff-mint: #b6f2d4;
+  --ff-bg: #f3f6f4;
+  --ff-line: #dfe8e3;
+  --df-MainDark: #0b5946;
+  --df-MainRegular: #14765e;
+  --df-MainMedium: #23876c;
+  --df-MainLight: #14765e;
+  --df-MainLight2: #a1d5bf;
+  --df-MainLight3: #d9eee2;
+  --df-MainLight4: #edf7f1;
+  --df-Grayscale1: #102c36;
+  --df-Grayscale2: #52676f;
+  --df-Grayscale3: #657980;
+  --df-Grayscale6: #e8eeea;
+  --df-Grayscale7: #f3f6f4;
+  --df-TxtFont: "Segoe UI", Arial, sans-serif;
+  --df-TltFont: "Segoe UI", Arial, sans-serif;
+  --df-DtaFont: "Segoe UI", Arial, sans-serif;
+  --df-BtnBorderRadius: 8px;
+}
+html, body, .WebApp { background: var(--ff-bg); color: var(--ff-ink); }
+body, .WebApp { font-family: "Segoe UI", Arial, sans-serif; }
+
+/* Cabecera y navegacion nativas: conservar botones y eventos de DataFlex. */
+.HeaderPanel.WebPanel { box-shadow: 0 1px 0 #233f48; }
+.HeaderPanel.WebPanel .WebContainer { background: #102c36; }
+.HeaderPanel.WebPanel .WebBreadcrumb .WebCrumb_Caption,
+.HeaderPanel.WebPanel .WebBreadcrumb .WebCrumb,
+.HeaderPanel.WebPanel .WebActionBar .WebMenuItem > div { color: #f7fcf9; }
+.HeaderPanel.WebPanel .WebBreadcrumb .WebCrumb_Caption { font-weight: 600; }
+.HeaderPanel.WebPanel .WebBreadcrumb .WebCrumb { background-color: #193b43; }
+.HeaderPanel.WebPanel .WebBreadcrumb .WebCrumb:after { border-left-color: #193b43; }
+.HeaderPanel.WebPanel .WebContainer .WebButton.WebMenuButton button:before,
+.HeaderPanel.WebPanel .WebActionBar.WebToolBar span.WebItm_Icon:before,
+.HeaderPanel.WebPanel .WebActionBar .WebMenuItem > div > span.WebItm_Icon:before,
+.HeaderPanel.WebPanel .WebBack_Icon button:before { color: #b6f2d4; }
+.HeaderPanel.WebPanel .WebButton button:focus-visible { outline: 2px solid #b6f2d4; outline-offset: -3px; }
+
+/* Listas, formularios y botones comparten el lenguaje visual. */
+.WebList .WebList_Head, .WebGrid .WebList_Head { background: #e8f0eb; color: var(--ff-ink); }
+.WebList .WebList_Body .WebList_Row td,
+.WebGrid .WebList_Body .WebList_Row td { border-bottom-color: var(--ff-line); }
+.WebList .WebList_Body .WebList_Row:hover,
+.WebGrid .WebList_Body .WebList_Row:hover { background-color: #f0f7f2; }
+.WebList .WebList_Body .WebList_Row.WebList_Selected,
+.WebGrid .WebList_Body .WebList_Row.WebList_Selected { background-color: #d9eee2 !important; color: #102c36; border-left-color: #14765e !important; }
+.WebForm .WebFrm_Wrapper { border-radius: 7px 7px 0 0; }
+.WebForm.WebCon_Focus .WebFrm_Wrapper { border-bottom-color: #14765e; }
+.WebControl > .WebCon_Inner > label { color: #52676f; font-weight: 600; }
+.WebButton.Web_Enabled button { border-radius: 8px; box-shadow: 0 2px 5px #102c3610; }
+.WebButton.Web_Enabled button:focus-visible { outline: 3px solid #90cdb5; outline-offset: 3px; }
+
+/* Portada. Las clases ff-* son propias y no alteran la estructura del motor. */
+.FootballDashboard { padding-top: 20px; }
+.FootballDashboard .FootballHero > .WebCon_Inner,
+.FootballDashboard .FootballHeading > .WebCon_Inner { margin: 0 12px; }
+.FootballDashboard .FootballTiles > .WebCon_Inner { padding: 0; background: transparent; }
+.FootballDashboard .FootballTile > .WebCon_Inner { margin: 0; }
+.FootballDashboard .FootballTiles { margin-top: 0; }
+.ff-hero { display: flex; align-items: center; justify-content: space-between; position: relative; overflow: hidden; gap: 24px; padding: 38px 40px; border-radius: 22px; background: #102c36; color: #fff; }
+.ff-hero-copy { position: relative; z-index: 1; flex: 1 1 56%; }
+.ff-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 10px; line-height: 1.5; font-weight: 700; letter-spacing: 1.8px; }
+.ff-brandmark { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 28px; border: 1px solid #95d5b7; border-radius: 8px 8px 12px 12px; color: #b6f2d4; font-size: 17px; letter-spacing: 0; }
+.ff-divider { color: #718e92; padding: 0 4px; }
+.ff-hero h1 { margin: 22px 0 15px; color: #fff; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; letter-spacing: -1.7px; font-weight: 650; }
+.ff-hero h1 em { color: #b6f2d4; font-style: normal; }
+.ff-hero p { font-size: 14px; line-height: 1.65; color: #c1d3d5; margin: 0; }
+.ff-hero-tag { display: inline-block; margin-top: 25px; padding: 7px 11px; border: 1px solid #42605e; border-radius: 30px; font-size: 9px; letter-spacing: 1.3px; color: #c5e9d6; }
+.ff-pitch { flex: 0 1 38%; min-width: 200px; transform: rotate(-8deg); color: #77ae9b; }
+.ff-pitch svg { width: 100%; display: block; stroke: currentColor; stroke-width: 1.2; background: repeating-linear-gradient(90deg, #ffffff03 0px, #ffffff03 40px, transparent 40px, transparent 80px); border-radius: 12px; }
+.ff-pitch .ff-player { fill: #b6f2d4; stroke: #102c36; stroke-width: 3px; }
+.ff-pitch .ff-pass { stroke: #b6f2d4; stroke-dasharray: 5 7; }
+.ff-pitch > span { display: block; font-size: 7px; letter-spacing: 1.2px; text-align: center; margin-top: 16px; color: #a9c6c1; }
+.ff-section { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding: 32px 2px 17px; }
+.ff-kicker { color: #14765e; font-size: 9px; }
+.ff-section h2 { color: #102c36; font-size: 23px; font-weight: 650; letter-spacing: -.7px; margin: 7px 0 0; line-height: 1.3; }
+.ff-section p { color: #5d737a; font-size: 12px; margin: 0 0 2px; }
+.ff-card { --ff-accent: #14765e; --ff-tint: #e8f5ed; position: relative; box-sizing: border-box; margin: 7px; padding: 22px 24px 18px; min-height: 202px; background: #fff; border: 1px solid #dfe8e3; border-radius: 16px; box-shadow: 0 3px 8px #173e2d04; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+.ff-blue .ff-card { --ff-accent: #345a94; --ff-tint: #edf2fb; }
+.ff-sand .ff-card { --ff-accent: #84612b; --ff-tint: #faf3e7; }
+.ff-violet .ff-card { --ff-accent: #70538e; --ff-tint: #f3eef9; }
+.ff-card:hover { transform: translateY(-3px); border-color: var(--ff-accent); box-shadow: 0 10px 25px #173e2d0d; }
+.ff-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 17px; }
+.ff-icon { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; background: var(--ff-tint); color: var(--ff-accent); border-radius: 12px; }
+.ff-icon svg { width: 23px; height: 23px; }
+.ff-card-number { font-size: 11px; letter-spacing: 1px; color: #7b8e94; font-weight: 600; }
+.ff-card h3 { margin: 0 0 7px; font-weight: 650; font-size: 20px; letter-spacing: -.5px; line-height: 1.2; color: #102c36; }
+.ff-card p { margin: 0; font-size: 12px; color: #5d737a; line-height: 1.5; }
+.ff-card-action { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 13px; border-top: 1px solid #edf1ee; color: var(--ff-accent); font-weight: 600; font-size: 11px; }
+.ff-arrow { font-size: 20px; line-height: 16px; transition: transform 180ms ease; }
+.ff-card:hover .ff-arrow { transform: translateX(4px); }
+.ff-footer { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #dfe8e3; padding: 18px 0 26px; margin: 25px 12px 0; font-size: 10px; color: #657980; }
+.ff-footer strong { font-size: 10px; color: #52676f; letter-spacing: 2px; }
+@media (max-width: 650px) {
+  .FootballDashboard { padding-top: 10px; }
+  .ff-hero { padding: 26px 24px; border-radius: 16px; }
+  .ff-hero h1 { font-size: 34px; letter-spacing: -1px; }
+  .ff-hero p { font-size: 13px; }
+  .ff-eyebrow { font-size: 8px; letter-spacing: 1px; gap: 7px; }
+  .ff-pitch { display: none; }
+  .ff-section { display: block; padding-top: 24px; }
+  .ff-section h2 { font-size: 21px; }
+  .ff-section p { margin-top: 8px; }
+  .ff-card { min-height: 0; margin: 6px; padding: 20px; }
+  .ff-footer { flex-direction: column; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ff-card, .ff-arrow { transition: none; }
+  .ff-card:hover, .ff-card:hover .ff-arrow { transform: none; }
+}
+
+/* Panel de las fichas */
+.ClubhouseSheet {
+    box-sizing: border-box;
+    margin-top: 28px;
+    padding: 28px;
+    background: #ffffff;
+    border: 1px solid #dfe8e3;
+    border-top: 4px solid #14765e;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px #102c3608;
+}
+
+/* Separación entre campos */
+.ClubhouseSheet .WebForm {
+    margin-bottom: 18px;
+}
+
+/* Etiquetas */
+.ClubhouseSheet .WebForm label {
+    color: #52676f;
+    font-weight: 600;
+}
+
+/* Fondo suave para los campos */
+.ClubhouseSheet .WebFrm_Wrapper {
+    background: #f6f9f7;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 650px) {
+    .ClubhouseSheet {
+        margin-top: 16px;
+        padding: 18px;
+    }
+}
+
+/* Listas de Clubhouse */
+.ClubhouseList {
+    border: 1px solid #dfe8e3;
+    border-radius: 14px;
+    box-shadow: 0 8px 28px #102c3608;
+    overflow: hidden;
+}
+
+.ClubhouseList .WebList_Head {
+    background: #e8f0eb;
+}
+
+.ClubhouseList .WebList_Head td {
+    color: #102c36;
+    font-weight: 600;
+}
+
+.ClubhouseList .WebList_Body .WebList_Row td {
+    border-bottom-color: #edf1ee;
+}
