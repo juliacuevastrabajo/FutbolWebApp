@@ -7,8 +7,14 @@ Use cWebPanel.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
+Use cWebButton.pkg
+Use cWebList.pkg
+Use cWebColumn.pkg
+Use cequipoDataDictionary.dd
 
 Use cligaDataDictionary.dd
+
+Register_Object oSelectEquipo
 
 Object oZoomLiga is a cWebView
     Set piColumnCount to 12
@@ -21,6 +27,12 @@ Object oZoomLiga is a cWebView
 
     Object oliga_DD is a cligaDataDictionary
     End_Object 
+    
+    // Limita la lista de la ficha a los equipos de la liga actual.
+        Object oequipoLiga_DD is a cequipoDataDictionary
+        Set DDO_Server to oliga_DD
+        Set Constrain_File to liga.File_Number
+    End_Object
 
     Set Main_DD To oliga_DD
     Set Server  To oliga_DD
@@ -62,6 +74,37 @@ Object oZoomLiga is a cWebView
             Set peLabelPosition to lpTop
             Set psLabel to "Máximo de equipos"
         End_Object 
+        
+        // Abre el listado de equipos filtrado por la liga actual.
+        Object oVerEquipos is a cWebButton
+            Set psCaption to "Ver equipos"
+            Set piColumnIndex to 0
+            Set piColumnSpan to 0
+
+            WebRegisterPath ntNavigateForward oSelectEquipo
+
+            Procedure OnClick
+                Boolean bTieneLiga
+                Get HasRecord of oliga_DD to bTieneLiga
+                If bTieneLiga Begin
+                    Send NavigatePath
+                End
+            End_Procedure
+        End_Object
+        
+         Object oListaEquiposLiga is a cWebList
+            Set Server to oequipoLiga_DD
+            Set psCSSClass to "MobileList ClubhouseList"
+            Set piColumnIndex to 0
+            Set piColumnSpan to 0
+            Set piHeight to 220
+            Set pbShowHeader to True
+
+            Object oNombreEquipo is a cWebColumn
+                Entry_Item equipo.Nombre
+                Set psCaption to "Equipos de esta liga"
+            End_Object
+        End_Object
     End_Object 
 
     Object oActionGroup is a cWebMenuGroup

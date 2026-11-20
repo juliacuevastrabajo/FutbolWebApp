@@ -8,10 +8,13 @@ Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
 Use SelectEquipo.wo
+Use cWebButton.pkg
 
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
 Use cjugadorDataDictionary.dd
+
+Register_Object oSelectPosicion
 
 Object oZoomJugador is a cWebView
     Set piColumnCount to 12
@@ -80,6 +83,19 @@ Object oZoomJugador is a cWebView
                 Send NavigatePath
             End_Procedure
         End_Object 
+        
+        // Abre Posiciones desde la ficha del jugador (nfUndefined).
+         Object oVerPosiciones is a cWebButton
+            Set psCaption to "Ver posiciones"
+            Set piColumnIndex to 0
+            Set piColumnSpan to 0
+
+            WebRegisterPath ntNavigateForward oSelectPosicion
+
+            Procedure OnClick
+                Send NavigatePath
+            End_Procedure
+        End_Object
     End_Object 
 
     Object oActionGroup is a cWebMenuGroup
@@ -162,6 +178,9 @@ Object oZoomJugador is a cWebView
     End_Procedure
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
+        
+        Boolean bTieneJugador
+        
         Case Begin
             Case (NavigateData.eNavigateType = nfFromMain)
                 // If from main, this is a propbably a main file Select to Zoom.
@@ -179,6 +198,15 @@ Object oZoomJugador is a cWebView
 
         Case End
 
+        // Muestra en el breadcrumb el nombre del jugador o "Nuevo jugador".
+        Get HasRecord of ojugador_DD to bTieneJugador
+        If bTieneJugador Begin
+            Send SetBreadCrumbCaption (Trim(jugador.Nombre) + " " + Trim(jugador.Apellido))
+        End
+        Else Begin
+            Send SetBreadCrumbCaption "Nuevo jugador"
+        End
+        
         Send SetActionButtons
 
     End_Procedure
